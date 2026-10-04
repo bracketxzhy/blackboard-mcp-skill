@@ -3,6 +3,7 @@ import { loadConfig } from '../src/config.js';
 import { response } from './helpers.js';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
+import { homedir } from 'node:os';
 
 const browser = vi.hoisted(() => ({ launchPersistentContext: vi.fn(), get: vi.fn(), goto: vi.fn(), close: vi.fn(), evaluate: vi.fn(async () => 'Fixture Edge UA'), isClosed: vi.fn(() => false) }));
 vi.mock('playwright', () => ({ chromium: { launchPersistentContext: browser.launchPersistentContext } }));
@@ -20,6 +21,12 @@ beforeEach(async () => {
 });
 
 describe('Dedicated Playwright session', () => {
+  it('rejects Linux and macOS daily profiles while permitting adjacent dedicated paths', () => {
+    expect(() => loadConfig({ BLACKBOARD_PROFILE_DIR: join(homedir(), '.config', 'microsoft-edge', 'Default') })).toThrow();
+    expect(() => loadConfig({ BLACKBOARD_PROFILE_DIR: join(homedir(), 'Library', 'Application Support', 'Google', 'Chrome', 'Default') })).toThrow();
+    expect(() => loadConfig({ XDG_CONFIG_HOME: '/dedicated/config', BLACKBOARD_PROFILE_DIR: '/dedicated/config/microsoft-edge/Profile 1' })).toThrow();
+    expect(loadConfig({ XDG_CONFIG_HOME: '/dedicated/config', BLACKBOARD_PROFILE_DIR: '/dedicated/config/microsoft-edge-mcp' }).profileDir).toContain('microsoft-edge-mcp');
+  });
   it('verifies login after reopening with the same UA and blank restored pages', async () => {
     await login(config);
     expect(browser.launchPersistentContext).toHaveBeenCalledWith(config.profileDir, expect.objectContaining({ channel: 'msedge', headless: false, args: ['--restore-last-session'] }));
