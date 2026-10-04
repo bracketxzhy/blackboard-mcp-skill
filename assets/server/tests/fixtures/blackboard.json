@@ -1,0 +1,21 @@
+{
+  "memberships": { "results": [{ "courseId": "_1001_1", "courseRoleId": "TeachingAssistant", "lastAccessed": "2026-10-04T01:00:00.000Z", "userId": "PRIVATE-DO-NOT-EXPOSE" }] },
+  "course": { "id": "_1001_1", "courseId": "DEMO-PHYS-01", "name": "Example Physics Course", "ultraStatus": "Classic", "availability": { "available": "Yes" }, "uuid": "DO-NOT-EXPOSE" },
+  "root": { "results": [
+    { "id": "_2001_1", "title": "Lectures", "contentHandler": { "id": "resource/x-bb-folder" }, "hasChildren": true },
+    { "id": "_2002_1", "title": "HW Submission", "contentHandler": { "id": "resource/x-bb-folder" }, "hasChildren": true },
+    { "id": "_2003_1", "title": "Information", "contentHandler": { "id": "resource/x-bb-folder" }, "hasChildren": true },
+    { "id": "_2004_1", "title": "Content", "contentHandler": { "id": "resource/x-bb-folder" }, "hasChildren": true }
+  ] },
+  "lectures": { "results": [
+    { "id": "_2005_1", "parentId": "_2001_1", "title": "Chap 5 Motion I", "contentHandler": { "id": "resource/x-bb-file", "file": { "fileName": "lesson.pdf", "mimeType": "application/pdf" } }, "created": "2026-10-01T00:00:00.000Z", "modified": "2026-10-02T00:00:00.000Z", "hasChildren": false },
+    { "id": "_2001_1", "title": "cycle", "contentHandler": { "id": "resource/x-bb-folder" }, "hasChildren": true }
+  ] },
+  "homework": { "results": [
+    { "id": "_2006_1", "title": "HW1", "body": "HW1 instructions", "contentHandler": { "id": "resource/x-bb-assignment", "gradeColumnId": "_3001_1" }, "availability": { "available": "Yes" }, "secret": "DO-NOT-EXPOSE" },
+    { "id": "_2007_1", "title": "HW2", "body": "HW2 instructions", "contentHandler": { "id": "resource/x-bb-assignment", "gradeColumnId": "_3002_1" }, "availability": { "available": "Yes" } }
+  ] },
+  "attachments": { "results": [{ "id": "_4001_1", "fileName": "lesson.pdf", "mimeType": "application/pdf" }] },
+  "hw1": { "id": "_3001_1", "name": "HW1", "score": { "possible": 100 }, "grading": { "due": "2026-09-27T15:59:00.000Z", "attemptsAllowed": 3, "scoringModel": "Last" } },
+  "hw2": { "id": "_3002_1", "name": "HW2", "score": { "possible": 100 }, "grading": { "due": "2026-10-07T15:59:00.000Z", "attemptsAllowed": 3, "scoringModel": "Last" } }
+}

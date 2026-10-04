@@ -1,0 +1,40 @@
+{
+  "name": "blackboard-course-mcp",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Local read-only Blackboard course MCP server bundled with a reusable skill",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "bin": {
+    "bb-mcp": "dist/cli/bb-mcp.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.test.json --noEmit",
+    "test": "vitest run",
+    "auth": "node dist/cli/bb-mcp.js auth login",
+    "auth:status": "node dist/cli/bb-mcp.js auth status",
+    "doctor": "node dist/cli/bb-mcp.js doctor",
+    "serve": "node dist/src/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.3.0",
+    "mammoth": "1.13.0",
+    "pdfjs-dist": "6.4.299",
+    "playwright": "1.63.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "2.3.0",
+    "@types/node": "26.6.4",
+    "jszip": "3.10.2",
+    "pdf-lib": "1.17.1",
+    "typescript": "7.0.2",
+    "vitest": "5.0.3"
+  }
+}

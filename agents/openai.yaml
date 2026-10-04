@@ -1,0 +1,4 @@
+interface:
+  display_name: "Blackboard Course Workflow"
+  short_description: "Own-login course reading, latest exports, and grading checks"
+  default_prompt: "Use $blackboard-course-workflow with my own Blackboard login to inspect my courses or export authorized latest submissions; keep grading tests read-only."

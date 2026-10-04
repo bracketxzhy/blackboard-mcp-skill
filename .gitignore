@@ -1,0 +1,12 @@
+**/node_modules/
+**/dist/
+**/coverage/
+**/.env
+**/browser-profile/
+**/mcp-session.json
+**/manifest.json
+downloads/
+work/
+*.log
+*.zip
+__pycache__/
