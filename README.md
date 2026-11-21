@@ -1,4 +1,18 @@
-# Blackboard 
+# Blackboard LMS MCP
+
+**TypeScript · Model Context Protocol · Read-only LMS tools**
+
+A local stdio MCP server and reusable workflow for inspecting Blackboard Learn Original courses. Eight tools cover courses, content, attachments, assignments, and deadlines. The server uses Zod schemas, course membership checks, and structured errors.
+
+| Layer | Implementation |
+| --- | --- |
+| Tool schemas and registration | [register.ts](assets/server/src/tools/register.ts) |
+| Course operations | [blackboard-service.ts](assets/server/src/blackboard-service.ts) |
+| HTTP access | [blackboard-client.ts](assets/server/src/blackboard-client.ts) |
+| Server | [server.ts](assets/server/src/server.ts) |
+| Synthetic tests | [tests/](assets/server/tests) |
+
+**Boundary:** each user supplies their own authenticated session. The MCP tool API is read-only; submission exports and grading capability checks are separate documented workflows, not grade-writing tools.
 
 A reusable Codex skill with its own local TypeScript MCP server. Every user logs in to their own Blackboard account in a dedicated Edge window. No credentials, browser sessions, student submissions, grade CSVs, or real student identities are included.
 
@@ -13,7 +27,7 @@ A reusable Codex skill with its own local TypeScript MCP server. Every user logs
 ## 安装 skill
 
 ```sh
-npx skills add https://github.com/bracketxzhy/blackboard-course-workflow --skill blackboard-course-workflow --agent codex
+npx skills add https://github.com/bracketxzhy/blackboard-mcp-skill --skill blackboard-course-workflow --agent codex
 ```
 
 可以添加 `--global` 安装到用户级 skills；具体位置由 Skills CLI 显示。也可以 clone 本仓库并把完整目录放到 Codex 的 skills 目录中。
